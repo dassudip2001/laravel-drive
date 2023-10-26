@@ -4,6 +4,7 @@
             <MenuButton
                 class="inline-flex w-full justify-center rounded-md px-4 py-2 text-sm font-medium text-gray-800 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
             >
+                <UserLogo class="mr-2" />
                 {{ $page.props.auth.user.name }}
 
                 <ChevronDownIcon
@@ -26,15 +27,30 @@
             >
                 <div class="px-1 py-1">
                     <MenuItem v-slot="{ active }">
-                        <ResponsiveNavLink :href="route('profile.edit')"
-                                           :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">
+                        <ResponsiveNavLink
+                            :href="route('profile.edit')"
+                            :class="[
+                                active
+                                    ? 'bg-gray-100 text-gray-900'
+                                    : 'text-gray-700',
+                                'block px-4 py-2 text-sm',
+                            ]"
+                        >
                             Profile
                         </ResponsiveNavLink>
                     </MenuItem>
                     <MenuItem v-slot="{ active }">
-                        <ResponsiveNavLink :href="route('logout')"
-                                           method="post" as="button"
-                                           :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">
+                        <ResponsiveNavLink
+                            :href="route('logout')"
+                            method="post"
+                            as="button"
+                            :class="[
+                                active
+                                    ? 'bg-gray-100 text-gray-900'
+                                    : 'text-gray-700',
+                                'block px-4 py-2 text-sm',
+                            ]"
+                        >
                             Logout
                         </ResponsiveNavLink>
                     </MenuItem>
@@ -46,9 +62,10 @@
 
 <script setup>
 // Imports
-import {Menu, MenuButton, MenuItems, MenuItem} from '@headlessui/vue'
-import {ChevronDownIcon} from '@heroicons/vue/20/solid'
+import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
+import { ChevronDownIcon } from "@heroicons/vue/20/solid";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
+import UserLogo from "@/Pages/Icons/User.vue";
 
 // Uses
 
@@ -61,9 +78,6 @@ import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 // Methods
 
 // Hooks
-
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

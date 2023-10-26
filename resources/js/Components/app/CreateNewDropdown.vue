@@ -3,7 +3,7 @@
         <MenuButton
             class="flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
         >
-            Create New
+            <AddNew /> Create New
         </MenuButton>
 
         <transition
@@ -29,7 +29,9 @@
                     </MenuItem>
                 </div>
                 <div class="px-1 py-1">
+                    <!-- file upload  -->
                     <FileUploadMenuItem />
+                    <!-- folder upload -->
                     <FolderUploadMenuItem />
                 </div>
             </MenuItems>
@@ -45,6 +47,8 @@ import CreateFolderModal from "@/Components/app/CreateFolderModal.vue";
 import { ref } from "vue";
 import FileUploadMenuItem from "@/Components/app/FileUploadMenuItem.vue";
 import FolderUploadMenuItem from "@/Components/app/FolderUploadMenuItem.vue";
+import AddNew from "@/Pages/Icons/AddNew.vue";
+import NewFolder from "@/Pages/Icons/AddFolder.vue";
 
 // Uses
 

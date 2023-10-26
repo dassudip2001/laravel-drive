@@ -1,27 +1,31 @@
 <template>
-    <div class="w-[600px] h-[80px] flex items-center">
-        <TextInput type="text"
-                   class="block w-full mr-2"
-                   v-model="search"
-                   autocomplete
-                   @keyup.enter.prevent="onSearch"
-                   placeholder="Search for files and folders"/>
+    <div class="w-[600px] h-[80px] flex items-center" id="search">
+        <TextInput
+            id="searchOption"
+            type="text"
+            class="block w-full mr-2"
+            v-model="search"
+            autocomplete
+            @keyup.enter.prevent="onSearch"
+            placeholder="Search for files and folders"
+        />
     </div>
 </template>
 
 <script setup>
 // Imports
 import TextInput from "@/Components/TextInput.vue";
-import {router, useForm} from "@inertiajs/vue3";
-import {onMounted, ref} from "vue";
-import {emitter, ON_SEARCH} from "@/event-bus.js";
+import { router, useForm } from "@inertiajs/vue3";
+import { onMounted, ref } from "vue";
+import { emitter, ON_SEARCH } from "@/event-bus.js";
+import SearchBer from "@/Pages/Icons/Search.vue";
 
 // Uses
 
-let params = ''
+let params = "";
 
 // Refs
-const search = ref('')
+const search = ref("");
 
 // Props & Emit
 
@@ -29,20 +33,28 @@ const search = ref('')
 
 // Methods
 function onSearch() {
-    params.set('search', search.value)
-    router.get(window.location.pathname + '?' + params.toString())
+    params.set("search", search.value);
+    router.get(window.location.pathname + "?" + params.toString());
 
-    emitter.emit(ON_SEARCH, search.value)
+    emitter.emit(ON_SEARCH, search.value);
 }
 
 // Hooks
 onMounted(() => {
-    params = new URLSearchParams(window.location.search)
-    search.value = params.get('search')
-})
-
+    params = new URLSearchParams(window.location.search);
+    search.value = params.get("search");
+});
 </script>
 
 <style scoped>
-
+/* #search {
+    background-color: #f3f4f6;
+    border-radius: 9999px;
+} */
+#searchOption {
+    background-color: #edf0f1;
+    border-radius: 9999px;
+    /* border: none; */
+    /* outline: none; */
+}
 </style>
